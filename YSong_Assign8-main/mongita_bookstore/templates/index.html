@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block container %}
+<main>
+    <div id="mainLeft">
+        <h1 class="welcomeText">
+            Welcome to History Bookstore!
+        </h1>
+        <p class="welcomeText">
+            Explore the past through our carefully curated collection of history books.
+        </p>
+        <p class="welcomeText">
+            From ancient civilizations to modern military history, biographies of great leaders to comprehensive world histories — we have something for every history enthusiast.
+        </p>
+        <p class="welcomeText">
+            Discover the stories that shaped our world.
+        </p>
+    </div>
+
+    <div id="mainRight">
+        <h1>Shop by category:</h1>
+        <div id="categorySelections">
+            {% for category in categories %}
+            <div class="category">
+                <p>
+                    <a href="{{ url_for('category', categoryId=category['categoryId']) }}">
+                        {{ category['categoryName'] }}
+                    </a>
+                </p>
+                <a href="{{ url_for('category', categoryId=category['categoryId']) }}">
+                    <img
+                        src="{{ url_for('static', filename='images/categories/' + category['categoryName']|lower|replace(' ', '-') + '-category.jpg') }}"
+                        alt="{{ category['categoryName'] }}"
+                    >
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

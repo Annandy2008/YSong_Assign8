@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "69f2b462caa2d0f951c0ffea",
+    "categoryId": 1,
+    "categoryName": "World History"
+  },
+  {
+    "_id": "69f2b462caa2d0f951c0ffeb",
+    "categoryId": 2,
+    "categoryName": "Military History"
+  },
+  {
+    "_id": "69f2b462caa2d0f951c0ffec",
+    "categoryId": 3,
+    "categoryName": "Historical Biographies"
+  },
+  {
+    "_id": "69f2b462caa2d0f951c0ffed",
+    "categoryId": 4,
+    "categoryName": "Ancient Civilizations"
+  }
+]

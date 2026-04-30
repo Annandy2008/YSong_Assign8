@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<main>
+    <section id="catLeft">
+        {% for cat in categories %}
+            <p class="notSelectedCategory">
+                <a href="{{ url_for('category', categoryId=cat['categoryId']) }}">
+                    {{ cat['categoryName'] }}
+                </a>
+            </p>
+        {% endfor %}
+    </section>
+
+    <section id="catRight">
+        <h2 style="margin:20px;">All Books</h2>
+
+        {% for book in books %}
+        <div class="book">
+            <div>
+                <a href="{{ url_for('book_detail', bookId=book['bookId']) }}">
+                    <img
+                        src="{{ url_for('static', filename='images/books/' + book['image']) }}"
+                        alt="{{ book['title'] }}"
+                    >
+                </a>
+            </div>
+
+            <div class="bookDetailBox">
+                <p class="bookTitle">
+                    <a href="{{ url_for('book_detail', bookId=book['bookId']) }}">
+                        {{ book['title'] }}
+                    </a>
+                </p>
+                <p class="bookDetail">by {{ book['author'] }}</p>
+                <p class="bookDetail">ISBN: {{ book['isbn'] }}</p>
+                <p class="bookDetail">Category: {{ book['categoryName'] }}</p>
+                <p class="bookPrice">${{ '%.2f'|format(book['price']) }}</p>
+
+                <a class="actionButton" href="{{ url_for('edit', bookId=book['bookId']) }}">Edit</a>
+                <a class="actionButton" href="{{ url_for('delete', bookId=book['bookId']) }}"
+                   onclick="return confirm('Delete this book?')">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}
